@@ -1,0 +1,70 @@
+---
+import { SEASON } from '../consts';
+import Common from '../layouts/Common.astro';
+---
+
+<Common>
+	<h1>
+		Shrimpia ModdedMC
+	</h1>
+	<p>
+		シュリンピア国民限定マイクラMODサーバーで、<br/>
+		あらたなる生活を楽しもう！
+	</p>
+	<div class="season">
+		シーズン{SEASON}は2024年4月1日からスタート！<br/>
+		<a href={`/news/season-${SEASON}`}>≫ 詳細を確認する</a>
+	</div>
+
+	<div class="links">
+		<a href="/join" class="button">
+			参加方法
+		</a>
+		<a href="/rules" class="button outline">
+			ルール
+		</a>
+		<a href="/mods" class="button outline">
+			MOD一覧
+		</a>
+		<a href="/news" class="button outline">
+			ニュース
+		</a>
+	</div>
+
+</Common>
+
+<style scoped lang="scss">
+	h1 {
+		font-weight: 900;
+		line-height: 1.4;
+		font-size: 3rem;
+	}
+	p {
+		font-size: 1.2rem;
+	}
+	.season {
+		margin: 3rem auto;
+		border: 4px solid var(--accent);
+		background: var(--card-background-color);
+		padding: 8px 32px;
+		width: fit-content;
+		font-size: 1.2rem;
+		font-weight: bold;
+	}
+	.links {
+		display: flex;
+		gap: 16px;
+	}
+
+	@media (max-width: 768px) {
+		.links {
+			display: block;
+			a {
+				display: block;
+				&:not(:last-child) {
+					margin-bottom: 16px;
+				}
+			}
+		}
+	}
+</style>
