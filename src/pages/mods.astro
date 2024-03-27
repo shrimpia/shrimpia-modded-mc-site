@@ -11,9 +11,14 @@ mods.sort((a, b) => a.name.localeCompare(b.name));
 <Common title={TITLE}>
 	<h1>{TITLE}</h1>
 
+	<p>
+		シーズン1で使用するModパック「Feed the Shrimp 2024.4」に含まれるModの一覧です。
+		カードをタップすることで、CurseForgeのダウンロー<br/>ドページに遷移します。
+	</p>
+
 	<div class="download">
-		<a class="button primary" href="/feed-the-shrimp-2024.4.zip" download>
-			Modパックをダウンロー<br/>ド
+		<a class="button primary" href="/feed-the-shrimp-2024.4.zip" download style="padding: 8px 64px">
+			パックを入手する
 		</a>
 	</div>
 
@@ -35,7 +40,7 @@ mods.sort((a, b) => a.name.localeCompare(b.name));
 
 .download {
 	text-align: center;
-	margin-bottom: 3rem;
+	margin: 2rem 0;
 }
 
 ul {
@@ -55,6 +60,11 @@ ul {
 		border-radius: 8px;
 		border: 1px solid var(--card-border-color);
 		box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+		transition: background-color 0.3s;
+
+		&:hover {
+			background-color: var(--card-background-color-hovered);
+		}
 
 		h2 {
 			margin: 0;

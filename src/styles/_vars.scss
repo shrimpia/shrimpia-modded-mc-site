@@ -2,15 +2,43 @@
 	--accent: #B93E43;
 
     --bg-background-color: #CEE6FF;
-	--bg-primary-color: #313b46;
+	--bg-primary-color: #463135;
 	--bg-secondary-color: #444f5b;
 
     --card-background-color: #ebf5ff;
-	--card-primary-color: #313b46;
+    --card-background-color-hovered: #d9e2eb;
+	--card-primary-color: #463135;
 	--card-border-color: #d1a4a5;
 
     --button-background-color: var(--accent);
     --button-primary-color: #fff;
 
+	--list-item-background-color: #b5d1f0;
+	--list-item-background-color-hovered: rgb(171, 195, 217);
+
 	--background-acrylic: #CEE6FF80;
+	--background-acrylic-text-color: #26171a;
+}
+
+// ダークテーマ
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg-background-color: #211520;
+		--bg-primary-color: #fff3f4;
+		--bg-secondary-color: #a59ea3;
+
+		--card-background-color: #392437;
+		--card-backgrouind-color-hovered: #311f2f;
+		--card-primary-color: #fff3f4;
+		--card-border-color: #a59ea3;
+
+		--button-background-color: var(--accent);
+		--button-primary-color: #fff;
+
+		--list-item-background-color: #4a2c3d;
+		--list-item-background-color-hovered: #3a2330;
+
+		--background-acrylic: #313b4680;
+		--background-acrylic-text-color: #fff;
+	}
 }

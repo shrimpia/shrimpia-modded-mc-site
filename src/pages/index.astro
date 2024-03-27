@@ -1,46 +1,125 @@
 ---
-import { SEASON } from '../consts';
+import { getCollection } from 'astro:content';
 import Common from '../layouts/Common.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+
+const news = (await getCollection('news'));
+
 ---
 
 <Common>
-	<h1>
-		Shrimpia ModdedMC
-	</h1>
-	<p>
-		シュリンピア国民限定マイクラMODサーバーで、<br/>
-		あらたなる生活を楽しもう！
-	</p>
-	<div class="season">
-		シーズン{SEASON}は2024年4月1日からスタート！<br/>
-		<a href={`/news/season-${SEASON}`}>≫ 詳細を確認する</a>
-	</div>
-
-	<div class="links">
-		<a href="/join" class="button">
-			参加方法
-		</a>
-		<a href="/rules" class="button outline">
-			ルール
-		</a>
-		<a href="/mods" class="button outline">
-			MOD一覧
-		</a>
-		<a href="/news" class="button outline">
-			ニュース
-		</a>
-	</div>
+	<header>
+		<h1>
+			<small>Shrimpia</small><br/> ModdedMC
+		</h1>
+		<p class="hero-description">
+			シュリンピア帝国が提供する、<wbr/>新たなMinecraftの世界。<br/>
+			共に冒険し、建築し、そして生き抜こう！
+		</p>
+		<div class="hero-links">
+			<a href="/join" class="button">
+				参加方法
+			</a>
+			<a href="/rules" class="button outline">
+				ルール
+			</a>
+		</div>
+	</header>
+	<ul class="pages">
+		<li><a href="/mods">導入MOD一覧</a></li>
+		<li><a href="/allowed-mods">許可されたクライアントMODの例</a></li>
+	</ul>
+	<section>
+		<h2>最新ニュース</h2>
+		<div class="news-list-scroll">
+			<nav class="news-list">
+				{news.slice(0, 3).map(n => (
+					<a href={`/news/${n.slug}`} class="news-card">
+						<article>
+							<img src={n.data.heroImage} alt={n.data.title} />
+							<div class="news-card-header">
+								<h3>{n.data.title}</h3>
+								<div class="date"><FormattedDate date={n.data.updatedDate || n.data.pubDate} /></div>
+							</div>
+						</article>
+					</a>
+				))}
+			</nav>
+			{news.length > 3 && (
+				<aside style="margin-top: 1rem">
+					<a href="/news">
+						全てのニュースを見る
+					</a>
+				</aside>
+			)}
+		</div>
+	</section>
 
 </Common>
 
 <style scoped lang="scss">
-	h1 {
-		font-weight: 900;
-		line-height: 1.4;
-		font-size: 3rem;
+	header {
+		text-align: center;
+
+		h1 {
+			font-weight: 900;
+			line-height: 1;
+			font-size: 5rem;
+			background: linear-gradient(160deg, #B93E43 35%, #2cb1ff 80%);
+			background-clip: text;
+			color: transparent;
+			@media (prefers-color-scheme: dark) {
+				filter: drop-shadow(0 0 24px #ff3636);
+			}
+			> small {
+				font-size: 0.7em;
+			}
+		}
+
+		.hero-description {
+			font-size: 1.5rem;
+			margin-top: 2rem;
+		}
+
+		.hero-links {
+			display: flex;
+			justify-content: center;
+			gap: 16px;
+			margin-top: 2rem;
+		}
 	}
 	p {
 		font-size: 1.2rem;
+	}
+	.pages {
+		list-style: none;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		gap: 12px;
+		margin-top: 2rem;
+		> li {
+			padding: 0 16px;
+			border-radius: 4px;
+			background-color: var(--list-item-background-color);
+		    transition: all 0.3s;
+			display: flex;
+			&::before {
+				content: '📄';
+				margin-right: 8px;
+			}
+		
+			a {
+				display: block;
+				flex: 1;
+				color: inherit;
+				text-decoration: none;
+			}
+
+			&:hover {
+				background-color: var(--list-item-background-color-hovered);
+			}
+		}
 	}
 	.season {
 		margin: 3rem auto;
@@ -51,19 +130,56 @@ import Common from '../layouts/Common.astro';
 		font-size: 1.2rem;
 		font-weight: bold;
 	}
-	.links {
-		display: flex;
-		gap: 16px;
+
+	.news-list-scroll {
+		overflow-x: auto;
 	}
 
-	@media (max-width: 768px) {
-		.links {
+	.news-list {
+		display: flex;
+		width: fit-content;
+		gap: 16px;
+
+		.news-card {
+			width: 240px;
 			display: block;
-			a {
-				display: block;
-				&:not(:last-child) {
-					margin-bottom: 16px;
+			background-color: var(--card-background-color);
+			color: inherit;
+			text-decoration: none;
+			border-radius: 8px;
+			border: 1px solid var(--card-border-color);
+			overflow: hidden;
+			transition: background-color 0.3s;
+
+			&:hover {
+				background-color: var(--card-background-color-hovered);
+			}
+
+			img {
+				width: 100%;
+				object-fit: cover;
+				border-radius: 0;
+			}
+
+			.news-card-header {
+				padding: 0 16px 16px 16px;
+				h3 {
+					font-size: 1rem;
+					font-weight: bold;
+					margin: 0;
 				}
+				.date {
+					font-size: 0.8rem;
+					color: var(--bg-secondary-color);
+				}
+			}
+		}
+	}
+
+	@media (max-width: 720px) {
+		header {
+			h1 > small {
+				font-size: 0.6em;
 			}
 		}
 	}

@@ -1,5 +1,5 @@
 ---
-title: 'Shrimpia ModdedMC Season 1'
+title: 'シーズン1開催のお知らせ'
 description: 'ModdedMC Season 1 情報'
 pubDate: 'Mar 24 2024'
 heroImage: '/news/season1.png'
