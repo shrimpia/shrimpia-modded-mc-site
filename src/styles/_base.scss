@@ -101,6 +101,32 @@ hr {
 	}
 }
 
+table {
+	width: 100%;
+	border-collapse: collapse;
+	background: var(--card-background-color);
+	border: 1px solid var(--card-border-color);
+
+	tr {
+		background: var(--card-background-color);
+
+		// 偶数行
+		&:nth-child(2n) {
+			background: var(--card-background2-color);
+		}
+		&:hover {
+			background: var(--card-background-color-hovered);
+		}
+
+		th, td {
+			padding: 0 8px;
+		}
+		th {
+			border-bottom: 1px solid var(--card-border-color);
+		}
+	}
+}
+
 .sr-only {
 	border: 0;
 	padding: 0;
