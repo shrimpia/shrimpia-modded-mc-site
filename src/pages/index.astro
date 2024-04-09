@@ -3,8 +3,10 @@ import { getCollection } from 'astro:content';
 import Common from '../layouts/Common.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 
-const news = (await getCollection('news'));
-
+// ニュースを取得し、pubDateでソートする
+const news = (await getCollection('news')).sort(
+	(a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+);
 ---
 
 <Common>
@@ -28,6 +30,7 @@ const news = (await getCollection('news'));
 	<ul class="pages">
 		<li><a href="/mods">導入MOD一覧</a></li>
 		<li><a href="/allowed-mods">許可されたクライアントMODの例</a></li>
+		<li><a href="/update">MODのアップデート方法</a></li>
 	</ul>
 	<section>
 		<h2>最新ニュース</h2>

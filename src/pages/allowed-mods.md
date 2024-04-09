@@ -12,7 +12,7 @@ title: 許可されたクライアントMOD
 |Optifine|マイクラのパフォーマンスを向上させるMOD|
 |Dynamic FPS|画面が動いていない時にFPSを下げることで、パフォーマンスを向上させるMOD|
 |Xaero's Minimap|ミニマップを追加するMOD|
-|Xaero('s World Map)|ワールドマップを追加するMOD|
+|Xaero's World Map|ワールドマップを追加するMOD|
 |JourneyMap|ミニマップとワールドマップを追加するMOD|
 |CraftPresence|Discordにプレイ中のゲームを表示するMOD|
 |Better Advancements|進捗画面を改善するMOD|

@@ -1,7 +1,7 @@
 ---
 title: 'サーバー名修正のお知らせ'
 description: 'サーバー名をplay.moddedmc.shrimpia.networkに変更しました'
-pubDate: 'Apr 1 2024'
+pubDate: '2024-04-01'
 heroImage: '/news/owabi.png'
 ---
 

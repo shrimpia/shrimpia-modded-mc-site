@@ -3,8 +3,9 @@ import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
 import Common from '../../layouts/Common.astro';
 
+// ニュースを取得し、pubDateでソートする
 const posts = (await getCollection('news')).sort(
-	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+	(a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
 );
 ---
 
