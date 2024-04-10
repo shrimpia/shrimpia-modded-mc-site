@@ -1,8 +1,8 @@
 ---
 title: '造船所ができました'
 description: '今後、船MODの船を作る場合は必ず造船所を使ってください。'
-pubDate: '2024-04-09'
-heroImage: '/news/mod-updated-2024041.png'
+pubDate: '2024-04-10'
+heroImage: '/news/shipyard.png'
 ---
 
 Shrimpia ModdedMCに造船所ができました！
